@@ -24,14 +24,16 @@ public class Main {
 		him.addFriend(987654321);
 		him.addFriend(246813579);
 		
-		slashTable.sling(567891234).setLat(36.15);
-		slashTable.sling(567891234).setLat(-95.94);
+		slashTable.sling(123456789).setLat(36.15);
+		slashTable.sling(123456789).setLat(-95.94);
 		slashTable.sling(135792468).setLat(36.1595);
 		slashTable.sling(135792468).setLat(-95.9);
 		slashTable.sling(987654321).setLat(36.1245);
 		slashTable.sling(987654321).setLat(-95.949);
 		slashTable.sling(246813579).setLat(36.161);
 		slashTable.sling(246813579).setLat(-95.941);
+		slashTable.sling(567891234).setLat(36.384);
+		slashTable.sling(567891234).setLat(-95.36);
 		
 		TheMonocle monocle = new TheMonocle();
 		Thread thread = new Thread(monocle);
