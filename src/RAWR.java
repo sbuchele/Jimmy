@@ -48,7 +48,7 @@ public class RAWR implements Runnable {
 						socks.getInputStream()));
 				String dialogue = null;
 				if (!waiting) {
-					System.out.println("Had dialogue");
+					//System.out.println("Had dialogue");
 					dialogue = in.readLine();
 				}
 				if (dialogue != null) {
