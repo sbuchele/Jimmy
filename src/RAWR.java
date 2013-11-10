@@ -6,6 +6,10 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import augments.Confetti;
+import augments.Friend;
+import augments.Slasher;
+
 
 
 public class RAWR implements Runnable {
@@ -30,8 +34,17 @@ public class RAWR implements Runnable {
 		double lon = 0;
 		ArrayList<Integer> frands = new ArrayList<Integer>();
 		
+		Confetti item = null; // = new Confetti(numFriends);
+		
 		
 		while (running) {
+			if(id != -1 && Main.slashTable.sling(id)!=null){
+				item = Main.slashTable.sling(id);
+			}
+			else if(id != -1){
+				item = new Confetti(id);
+				Main.slashTable.add(item);
+			}
 			try {
 				//System.out.println("Waiting");
 				wait(100);
@@ -48,7 +61,7 @@ public class RAWR implements Runnable {
 						socks.getInputStream()));
 				String dialogue = null;
 				if (!waiting) {
-					//System.out.println("Had dialogue");
+					System.out.println("Had dialogue");
 					dialogue = in.readLine();
 				}
 				if (dialogue != null) {
@@ -77,12 +90,30 @@ public class RAWR implements Runnable {
 						waiting = true;
 					} else if (waitID) {
 						System.out.println("Client says: " + dialogue);
+						id = Integer.parseInt(dialogue);
+						waitID = false;
 					} else if (waitNum) {
 						int number = Integer.parseInt(dialogue);
 						System.out.println("Client says: " + dialogue);
-						if (!frands.contains(number)) {
+						/*if (!frands.contains(number)) {
 							frands.add(number);
-						}
+						}*/
+						item.addFriend(number);
+						System.out.println("Client says: " + dialogue);
+						waiting = false;
+						waitNum = false;
+					}
+					else if(waitLong){
+						System.out.println("Client says: " + dialogue);
+						item.setLon(Double.parseDouble(dialogue));
+						waiting = false;
+						waitLong = false;
+					}
+					else if(waitLat){
+						System.out.println("Client says: " + dialogue);
+						item.setLat(Double.parseDouble(dialogue));
+						waitLat = false;
+						waiting = false;
 					}
 					//socks.close();
 				}
