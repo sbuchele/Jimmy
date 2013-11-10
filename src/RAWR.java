@@ -38,7 +38,12 @@ public class RAWR implements Runnable {
 			e.printStackTrace();
 		}
        while(running)
-		
+		try {
+			wait(500);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		try {
 			String dialogue = null;
 			if(in.ready()){
@@ -47,29 +52,34 @@ public class RAWR implements Runnable {
 			else dialogue = null;
 			if (dialogue != null) {
 				if (dialogue == "Have ID") {
+					System.out.println("Client says: " + dialogue);
 					waitID = true;
 					out.println("Send Stuff");
 					out.flush();
 				} else if (dialogue == "Have num") {
+					System.out.println("Client says: " + dialogue);
 					waitNum = true;
 					out.println("Send Stuff");
 					out.flush();
 				}
 				else if(dialogue == "Have lat"){
+					System.out.println("Client says: " + dialogue);
 					waitLat = true;
 					out.println("Send Stuff");
 					out.flush();
 				}
 				else if(dialogue == "Have long"){
+					System.out.println("Client says: " + dialogue);
 					waitLong = true;
 					out.println("Send Stuff");
 					out.flush();
 				}
 				else if(waitID){
-					
+					System.out.println("Client says: " + dialogue);
 				}
 				else if(waitNum){
 					int number = Integer.parseInt(dialogue);
+					System.out.println("Client says: " + dialogue);
 					if(!frands.contains(number)){
 						frands.add(number);
 					}
