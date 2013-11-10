@@ -16,7 +16,7 @@ public class RAWR implements Runnable {
 		socks = server;
 	}
 
-	public void run() {
+	public synchronized void run() {
 		boolean running = true;
 		boolean waiting = false;
 		boolean waitID = false;
@@ -30,9 +30,9 @@ public class RAWR implements Runnable {
 		ArrayList<Integer> frands = new ArrayList<Integer>();
 		
 		try {
-			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socks
+			out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socks
 			        .getOutputStream())), true);
-			BufferedReader in = new BufferedReader(new InputStreamReader(socks.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(socks.getInputStream()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

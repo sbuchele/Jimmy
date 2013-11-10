@@ -21,12 +21,18 @@ public class TheMonocle implements Runnable {
 			@Override
 		   public void run()
 		   {
-		      while(true)
+		      try {
+				serverSocket = new ServerSocket(8888);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			while(true)
 		      {
 		         try
 		         {
 		        	boolean running = true;
-		        	serverSocket = new ServerSocket(8888);
+		        	
 		            System.out.println("Waiting for client on port " +
 		            serverSocket.getLocalPort() + "...");
 		            Socket server = serverSocket.accept();
@@ -34,7 +40,7 @@ public class TheMonocle implements Runnable {
 		                  + server.getRemoteSocketAddress());
 		            RAWR rawr = new RAWR(server);
 		            new Thread(rawr).start();
-		            break;
+		            //serverSocket = null;
 		         }catch(SocketTimeoutException s)
 		         {
 		            System.out.println("Socket timed out!");
