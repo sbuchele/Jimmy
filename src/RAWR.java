@@ -38,14 +38,13 @@ public class RAWR implements Runnable {
 			e.printStackTrace();
 		}
        while(running)
+		
 		try {
-			wait(500);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			String dialogue = in.readLine();
+			String dialogue = null;
+			if(in.ready()){
+			dialogue = in.readLine();
+			}
+			else dialogue = null;
 			if (dialogue != null) {
 				if (dialogue == "Have ID") {
 					waitID = true;

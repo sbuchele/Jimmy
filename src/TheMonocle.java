@@ -34,6 +34,7 @@ public class TheMonocle implements Runnable {
 		                  + server.getRemoteSocketAddress());
 		            RAWR rawr = new RAWR(server);
 		            new Thread(rawr).start();
+		            break;
 		         }catch(SocketTimeoutException s)
 		         {
 		            System.out.println("Socket timed out!");
