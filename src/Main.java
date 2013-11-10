@@ -7,6 +7,26 @@ import augments.Slasher;
 public class Main {
 	
 	public static void main(String[] args){
+		addConfetti(123456789);
+		addConfetti(567891234);
+		addConfetti(135792468);
+		addConfetti(987654321);
+		addConfetti(246813579);
+		Confetti you=slashTable.sling(123456789);
+		you.addFriend(567891234);
+		you.addFriend(135792468);
+		you.addFriend(987654321);
+		you.addFriend(246813579);
+		
+		slashTable.sling(567891234).setLat(36.15);
+		slashTable.sling(567891234).setLat(-95.94);
+		slashTable.sling(135792468).setLat(36.1595);
+		slashTable.sling(135792468).setLat(-95.9);
+		slashTable.sling(987654321).setLat(36.1245);
+		slashTable.sling(987654321).setLat(-95.949);
+		slashTable.sling(246813579).setLat(36.161);
+		slashTable.sling(246813579).setLat(-95.941);
+		
 		TheMonocle monocle = new TheMonocle();
 		Thread thread = new Thread(monocle);
 		thread.start();
