@@ -7,6 +7,7 @@ import augments.Slasher;
 public class Main {
 	
 	public static void main(String[] args){
+		addConfetti(3);
 		addConfetti(123456789);
 		addConfetti(567891234);
 		addConfetti(135792468);
@@ -17,6 +18,11 @@ public class Main {
 		you.addFriend(135792468);
 		you.addFriend(987654321);
 		you.addFriend(246813579);
+		Confetti him=slashTable.sling(3);
+		him.addFriend(567891234);
+		him.addFriend(135792468);
+		him.addFriend(987654321);
+		him.addFriend(246813579);
 		
 		slashTable.sling(567891234).setLat(36.15);
 		slashTable.sling(567891234).setLat(-95.94);
