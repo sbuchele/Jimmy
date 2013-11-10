@@ -120,11 +120,14 @@ public class RAWR implements Runnable {
 						waiting = false;
 					}
 					else if(dialogue.equals("Power time")){
+						System.out.println("Sending Power");
 						out.println(Main.updateLoc(id, item.getLat(), item.getLon()));
 						out.flush();
 					}
 					//socks.close();
 				}
+				else{socks.close();
+				running = false;}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
