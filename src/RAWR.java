@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 
 public class RAWR implements Runnable {
@@ -26,6 +27,7 @@ public class RAWR implements Runnable {
 		int numFriends = 0;
 		double lat = 0;
 		double lon = 0;
+		ArrayList<Integer> frands = new ArrayList<Integer>();
 		
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socks
@@ -66,6 +68,12 @@ public class RAWR implements Runnable {
 				}
 				else if(waitID){
 					
+				}
+				else if(waitNum){
+					int number = Integer.parseInt(dialogue);
+					if(!frands.contains(number)){
+						frands.add(number);
+					}
 				}
 				//socks.close();
 			}
