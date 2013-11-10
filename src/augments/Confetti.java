@@ -10,9 +10,14 @@ public class Confetti implements Keyable {
 	private double lon;
 	private ArrayList<Friend> friends;
 
+	public Confetti(int number){
+		phoneNumber=number;
+		friends=new ArrayList<Friend>();
+	}
+	
 	public boolean addFriend(int number){
 		for(int i=0;i<friends.size();i++){
-			if(number==friends.get(i).getPhoneNum()){
+			if(number==friends.get(i).key()){
 				return false;
 			}
 		}
@@ -42,6 +47,10 @@ public class Confetti implements Keyable {
 
 	public String getName() {
 		return name;
+	}
+	
+	public void setName(String name) {
+		this.name=name;
 	}
 
 	public ArrayList<Friend> getFriends() {

@@ -18,7 +18,7 @@ public class Slasher<T extends Keyable> {
 			return true;
 		}
 		for(int i=1;i<valid.length;i++){
-			if(valid[(hash+i)%valid.length]){
+			if(!valid[(hash+i)%valid.length]){
 				valid[(hash+i)%valid.length]=true;
 				table[(hash+i)%valid.length]=item;
 				return true;
