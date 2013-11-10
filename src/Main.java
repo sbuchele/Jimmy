@@ -26,6 +26,8 @@ public class Main {
 		
 		slashTable.sling(123456789).setLat(36.15);
 		slashTable.sling(123456789).setLat(-95.94);
+		slashTable.sling(3).setLat(36.15);
+		slashTable.sling(3).setLat(-95.94);
 		slashTable.sling(135792468).setLat(36.1595);
 		slashTable.sling(135792468).setLat(-95.9);
 		slashTable.sling(987654321).setLat(36.1245);
