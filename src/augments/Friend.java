@@ -20,6 +20,13 @@ public class Friend implements Keyable{
 		return 6371*c;
 	}
 	
+	public double calcPower(double dist){
+		double sigma=2;//km
+		double a=Math.pow(Math.sqrt(2*Math.PI)*sigma,-1);
+		double b=-Math.pow(dist, 2)/(2*Math.pow(sigma, 2));
+		return 1000.0/(dist+1)*a*Math.pow(Math.E, b);
+	}
+	
 	public double[] getDistance() {
 		return distance;
 	}
