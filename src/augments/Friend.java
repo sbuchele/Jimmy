@@ -17,7 +17,7 @@ public class Friend implements Keyable{
 				* Math.pow(Math.sin(deltaLon/2),2);
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		distance[(start + size + 1)%50]=6371*c;
-		return 6371*c;
+		return calcPower(6371*c);
 	}
 	
 	public double calcPower(double dist){

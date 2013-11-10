@@ -2,6 +2,8 @@ package augments;
 
 public class Slasher<T extends Keyable> {
 	
+	
+	public static Slasher<Confetti> slashTable=new Slasher<Confetti>(100000);
 	private Keyable[] table;
 	private boolean[] valid;
 			
@@ -46,6 +48,28 @@ public class Slasher<T extends Keyable> {
 		return null;
 	}
 	
+	
+	
+	public static boolean addConfetti(int number){
+		Confetti con=new Confetti(number);
+		return slashTable.add(con);
+	}
+	
+	public static double updateLoc(int number, double lat, double lon){
+		double power=0;
+		Confetti con=slashTable.sling(number);
+		if(con==null)
+			return 0;//prevent null pointer
+		con.setLat(lat);
+		con.setLon(lon);
+		for(Friend foe:con.getFriends()){
+			Confetti foeCon=slashTable.sling(foe.key());
+			if(foeCon!=null){
+				power+=foe.dist(lat, lon, foeCon.getLat(), foeCon.getLon());
+			}
+		}
+		return power;
+	}
 	
 	
 }
