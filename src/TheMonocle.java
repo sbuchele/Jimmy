@@ -11,10 +11,10 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 
 
-public class TheMonocle {
+public class TheMonocle implements Runnable {
 
 	
-	public class isASir implements Runnable{
+	//public class isASir implements Runnable{
 
 		
 		private ServerSocket serverSocket;// = new ServerSocket(8888);
@@ -46,5 +46,5 @@ public class TheMonocle {
 		      }
 		   }
 		
-	}
+	//}
 }
