@@ -127,7 +127,10 @@ public class RAWR implements Runnable {
 					//socks.close();
 				}
 				else{socks.close();
-				running = false;}
+				if(socks.isClosed()){
+					running = false;
+				}
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
