@@ -1,8 +1,12 @@
 package augments;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Friend implements Keyable{
 	private int phoneNum;
 	private double[] distance;
+	private Date[] time;
 	int start,size;
 
 	public double dist(double lat1, double lon1, double lat2, double lon2){
@@ -16,6 +20,10 @@ public class Friend implements Keyable{
 				+ Math.cos(lat1) * Math.cos(lat2) 
 				* Math.pow(Math.sin(deltaLon/2),2);
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		
+		Calendar cal = Calendar.getInstance();
+    	time[(start + size + 1)%50]=cal.getTime();
+    	
 		distance[(start + size + 1)%50]=6371*c;
 		return calcPower(6371*c);
 	}
@@ -34,8 +42,13 @@ public class Friend implements Keyable{
 	public Friend(int number){
 		phoneNum=number;
 		distance=new double[50];
+		time=new Date[50];
 		start=0;
 		size=0;
+	}
+
+	public Date[] getTime() {
+		return time;
 	}
 
 	@Override

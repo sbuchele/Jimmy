@@ -1,5 +1,7 @@
 package augments;
 
+import java.util.Date;
+
 public class Slasher<T extends Keyable> {
 	
 	
@@ -71,5 +73,24 @@ public class Slasher<T extends Keyable> {
 		return power;
 	}
 	
+	public static double[] getGraphLoc(int conNum, int friNum){
+		Confetti con=slashTable.sling(conNum);
+		for(Friend foe:con.getFriends()){
+			if(foe.key()==friNum){
+				return foe.getDistance();
+			}
+		}
+		return null;
+	}
+	
+	public static Date[] getGraphTime(int conNum, int friNum){
+		Confetti con=slashTable.sling(conNum);
+		for(Friend foe:con.getFriends()){
+			if(foe.key()==friNum){
+				return foe.getTime();
+			}
+		}
+		return null;
+	}
 	
 }
