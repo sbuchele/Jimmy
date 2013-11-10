@@ -28,6 +28,7 @@ public class RAWR implements Runnable {
 		boolean waitNum = false;
 		boolean waitLat = false;
 		boolean waitLong = false;
+		int powerCalc = 0;
 		int id = -1;
 		int numFriends = 0;
 		double lat = 0;
@@ -38,6 +39,7 @@ public class RAWR implements Runnable {
 		
 		
 		while (running) {
+			powerCalc++;
 			if(id != -1 && Main.slashTable.sling(id)!=null){
 				item = Main.slashTable.sling(id);
 			}
@@ -63,6 +65,7 @@ public class RAWR implements Runnable {
 				if (!waiting) {
 					System.out.println("Had dialogue");
 					dialogue = in.readLine();
+					System.out.println(dialogue);
 				}
 				if (dialogue != null) {
 					if (dialogue.equals("Have ID")) {
@@ -70,13 +73,13 @@ public class RAWR implements Runnable {
 						waitID = true;
 						out.println("Send Stuff");
 						out.flush();
-						waiting = true;
+						//waiting = true;
 					} else if (dialogue.equals("Have num")) {
 						System.out.println("Client says: " + dialogue);
 						waitNum = true;
 						out.println("Send Stuff");
 						out.flush();
-						waiting = true;
+						//waiting = true;
 					} else if (dialogue == "Have lat") {
 						System.out.println("Client says: " + dialogue);
 						waitLat = true;
@@ -87,11 +90,12 @@ public class RAWR implements Runnable {
 						waitLong = true;
 						out.println("Send Stuff");
 						out.flush();
-						waiting = true;
+						//waiting = true;
 					} else if (waitID) {
 						System.out.println("Client says: " + dialogue);
 						id = Integer.parseInt(dialogue);
 						waitID = false;
+						waiting = false;
 					} else if (waitNum) {
 						int number = Integer.parseInt(dialogue);
 						System.out.println("Client says: " + dialogue);
@@ -114,6 +118,10 @@ public class RAWR implements Runnable {
 						item.setLat(Double.parseDouble(dialogue));
 						waitLat = false;
 						waiting = false;
+					}
+					else if(dialogue.equals("Power time")){
+						out.println(Main.updateLoc(id, item.getLat(), item.getLon()));
+						out.flush();
 					}
 					//socks.close();
 				}
